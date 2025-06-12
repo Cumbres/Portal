@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso al Portal Comité Cumbres de Quilpué</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #1a202c; /* Fondo oscuro similar al footer */
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Evita el scroll mientras está la pantalla de acceso */
+        }
+        .access-container {
+            background-color: #2d3748; /* Un gris oscuro para el cuadro de acceso */
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+            max-width: 90%;
+            width: 400px;
+        }
+        .access-container h2 {
+            font-size: 2.25rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            color: #e2e8f0; /* Texto claro */
+            margin-bottom: 1.5rem;
+        }
+        .access-container input[type="password"] {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border-radius: 0.5rem;
+            border: 2px solid #4a5568; /* Borde sutil */
+            background-color: #2d3748;
+            color: #e2e8f0;
+            font-size: 1.25rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .access-container input[type="password"]:focus {
+            border-color: #63b3ed; /* Borde azul al enfocar */
+        }
+        .access-container button {
+            background-color: #4299e1; /* Azul vibrante */
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .access-container button:hover {
+            background-color: #3182ce; /* Azul más oscuro al pasar el cursor */
+            transform: translateY(-2px);
+        }
+        .error-message {
+            color: #ef4444; /* Rojo para errores */
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="access-container">
+        <h2>Acceso Restringido</h2>
+        <input type="password" id="passwordInput" placeholder="Introduce la clave de acceso">
+        <button onclick="checkPassword()">Ingresar al Portal</button>
+        <p id="errorMessage" class="error-message hidden">Clave incorrecta. Inténtalo de nuevo.</p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const correctPassword = "Comite2025"; // La clave correcta
+
+            if (password === correctPassword) {
+                // Redirige a la página principal después de la validación
+                window.location.href = 'portal.html';
+            } else {
+                errorMessage.classList.remove('hidden');
+                errorMessage.classList.add('block'); // Muestra el mensaje de error
+            }
+        }
+
+        // Permitir presionar Enter para ingresar
+        document.getElementById('passwordInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+
+</body>
+</html>
