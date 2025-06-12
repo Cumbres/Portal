@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Gestión Comité Cumbres de Quilpué</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .hero-section {
+            background-image: url('https://i.ibb.co/39XgvPMg/PENUP-20240906-011555.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%); /* Opacidad más sutil */
+            z-index: -1;
+        }
+        .card-button {
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, background-color 0.4s ease-in-out;
+        }
+        .card-button:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        /* Animación de entrada para el contenido principal */
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .content-loaded {
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <header class="hero-section text-white flex items-center justify-center flex-grow p-4 md:p-8">
+        <div id="portal-content" class="text-center bg-black bg-opacity-40 p-6 sm:p-8 md:p-10 rounded-lg shadow-xl max-w-5xl w-full mb-16 md:mb-24 opacity-0">
+            <div class="flex flex-col md:flex-row items-center justify-center md:justify-start mb-6 bg-black bg-opacity-20 rounded-lg p-3">
+                <img src="logo.png" alt="Logo Comité" class="h-16 sm:h-20 mr-4 md:mr-6 mb-4 md:mb-0">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mt-2 md:mt-0">PORTAL DE GESTIÓN COMITÉ CUMBRES DE QUILPUÉ</h1>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mt-10">
+                <a href="https://cumbres.github.io/Reglamento" target="_blank" class="card-button bg-gradient-to-r from-blue-600 to-blue-800 text-white py-6 px-4 rounded-xl shadow-lg flex items-center justify-center text-xl sm:text-2xl font-semibold hover:from-blue-700 hover:to-blue-900 mx-auto w-11/12 md:w-full">
+                    Reglamento
+                </a>
+                <a href="https://cumbres.github.io/Actas/" target="_blank" class="card-button bg-gradient-to-r from-green-600 to-green-800 text-white py-6 px-4 rounded-xl shadow-lg flex items-center justify-center text-xl sm:text-2xl font-semibold hover:from-green-700 hover:to-green-900 mx-auto w-11/12 md:w-full">
+                    Generador de Actas
+                </a>
+                <a href="https://cumbres.github.io/Gestordetareas/" target="_blank" class="card-button bg-gradient-to-r from-purple-600 to-purple-800 text-white py-6 px-4 rounded-xl shadow-lg flex items-center justify-center text-xl sm:text-2xl font-semibold hover:from-purple-700 hover:to-purple-900 mx-auto w-11/12 md:w-full">
+                    Generador de Informes
+                </a>
+                 <a href="calendario.html" target="_blank" class="card-button bg-gradient-to-r from-yellow-500 to-orange-600 text-white py-6 px-4 rounded-xl shadow-lg flex items-center justify-center text-xl sm:text-2xl font-semibold hover:from-yellow-600 hover:to-orange-700 mx-auto w-11/12 md:w-full">
+                    Calendario
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <footer class="bg-gray-800 text-white text-center p-4 mt-auto">
+        <p class="text-sm">&copy; Todos los derechos reservados por Comité Cumbres de Quilpué 2025.</p>
+    </footer>
+
+    <script>
+        // Este script aplica la animación de carga una vez que el contenido se ha cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('portal-content').classList.add('content-loaded');
+        });
+    </script>
+
+</body>
+</html>
